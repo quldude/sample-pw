@@ -1,0 +1,15 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+dist/
+.vscode/
+.env.*
+tests/**/data/files/downloads/
+playwright_reports/
+.cache/
+tests/**/*.spec.ts-snapshots/
+TMP_FOLDER/
+blob-report/
+containers.json
+*.pem

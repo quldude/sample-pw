@@ -1,0 +1,40 @@
+{
+  // needed to read "paths". Ref https://github.com/TypeStrong/ts-node#paths-and-baseurl
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es2022",
+    "types": ["node"],
+    "lib": ["es2022", "esnext.asynciterable"],
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "strict": false,
+    "rootDir": "./",
+    "baseUrl": "./",
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", ".env", "tests/**/*.ts"],
+  "exclude": ["dist", "build", "node_modules"],
+  "references": [
+    {
+      "path": "tsconfig.root.json"
+    }
+  ]
+}
