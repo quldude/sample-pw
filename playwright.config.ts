@@ -59,6 +59,7 @@ const defaultPlaywrightConfig: PlaywrightTestConfig = {
       use: {
         ...devices["Desktop Chrome"],
         userAgent: `${devices["Desktop Chrome"].userAgent} ${CUSTOM_USER_AGENT}`,
+        channel: "chromium",
       },
       dependencies: ["setup"],
     },
