@@ -1,10 +1,16 @@
 import { PlaywrightTestConfig, devices } from "@playwright/test";
 
-const baseURL = "https://google.com/";
+const baseURL = "https://playwright.dev/";
 const WORKING_DIR = process.env.PWD ? process.env.PWD : process.cwd();
 const TEST_FOLDER = `${WORKING_DIR}/tests`;
 const SUBPRODUCT_TEST_FOLDER = `${TEST_FOLDER}/sample/product`;
 const CUSTOM_USER_AGENT = "CustomAutomationUserAgent";
+
+const projectUseConfig = {
+  ...devices["Desktop Chrome"],
+  userAgent: `${devices["Desktop Chrome"].userAgent} ${CUSTOM_USER_AGENT}`,
+  channel: "chromium",
+};
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -53,14 +59,17 @@ const defaultPlaywrightConfig: PlaywrightTestConfig = {
     {
       name: "setup",
       testMatch: /.*globalSetup\.ts/,
+      teardown: "cleanup",
+      use: projectUseConfig,
+    },
+    {
+      name: "cleanup",
+      testMatch: /.*globalTeardown\.ts/,
+      use: projectUseConfig,
     },
     {
       name: "chromium",
-      use: {
-        ...devices["Desktop Chrome"],
-        userAgent: `${devices["Desktop Chrome"].userAgent} ${CUSTOM_USER_AGENT}`,
-        channel: "chromium",
-      },
+      use: projectUseConfig,
       dependencies: ["setup"],
     },
   ],
